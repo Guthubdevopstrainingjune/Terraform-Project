@@ -33,5 +33,5 @@ resource "aws_instance" "example" {
 }
 
 output "public_id"{
-    value = var.aws_instance.example.public_id
+    value = aws_instance.example.public_id
 }
