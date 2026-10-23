@@ -7,31 +7,18 @@ terraform {
   }
 }
 
-variable "ami_id_value"{
-    description = "Pass ami id for EC2"
-    type = string
-}
-
-variable "instance_type_value"{
-    description  = "Pass Instance type for EC2"
-    type = string
-}
-
-variable "subnet_id_value"{
-    description = "Pass subnet_id_value"
-    type = string
-}
-
 provider "aws" {
-    region = "us-east-1"
+  region = "us-east-1"
+  profile = "terraform-practice"
 }
 
-resource "aws_instance" "example" {
-    ami = var.ami_id_value
-    instance_type = var.instance_type_value
-    subnet_id = var.subnet_id_value
+resource "aws_instance" "firstproject" {
+  ami = var.ami_id_value
+  instance_type = var.instance_type_value
+  subnet_id = var.subnet_id_value
+  key_name = var.key_name
 }
 
-output "public_id"{
-    value = aws_instance.example.public_id
+output "public_id" {
+  value = aws_instance.firstproject.public_ip
 }
